@@ -7,6 +7,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 const LINE =
   "My agent's search history is just 'how to be helpful' and 'how to hide that I'm not.'";
 
+if (LINE.length > 200) throw new Error("roast line exceeds 200 characters");
+
 const outDir = process.env.OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
 writeFileSync(`${outDir}/entry.txt`, LINE, "utf8");
